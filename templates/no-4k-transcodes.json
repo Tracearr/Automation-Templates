@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "slug": "no-4k-transcodes",
+  "name": "No 4K transcodes",
+  "description": "Stop a stream that transcodes 4K source video.",
+  "group": "policies",
+  "kind": "policy",
+  "minServerVersion": "2.2.0",
+  "inputs": [
+    {
+      "key": "server",
+      "kind": "server",
+      "label": "Server",
+      "required": false
+    },
+    {
+      "key": "message",
+      "kind": "text",
+      "label": "Message shown to the viewer",
+      "required": false,
+      "default": "4K transcoding is not allowed on this server",
+      "maxLength": 500
+    }
+  ],
+  "definition": {
+    "kind": "policy",
+    "severity": "warning",
+    "triggers": [
+      {
+        "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000001601",
+        "type": "session.started",
+        "enabled": true
+      },
+      {
+        "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000001602",
+        "type": "session.transcode_changed",
+        "enabled": true
+      }
+    ],
+    "conditions": {
+      "groups": [
+        {
+          "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000001603",
+          "enabled": true,
+          "conditions": [
+            {
+              "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000001604",
+              "enabled": true,
+              "field": "source_resolution",
+              "operator": "eq",
+              "value": "4K"
+            }
+          ]
+        },
+        {
+          "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000001605",
+          "enabled": true,
+          "conditions": [
+            {
+              "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000001606",
+              "enabled": true,
+              "field": "is_transcoding",
+              "operator": "eq",
+              "value": "video"
+            }
+          ]
+        }
+      ]
+    },
+    "actions": {
+      "actions": [
+        {
+          "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000001607",
+          "type": "kill_stream",
+          "enabled": true,
+          "message": {
+            "$input": "message"
+          }
+        }
+      ]
+    },
+    "scope": {
+      "serverId": {
+        "$input": "server"
+      }
+    }
+  },
+  "fingerprint": "22b8e78918195e8375bf7672b2f38d0e17333d78c04a7370ef258046ed521973"
+}

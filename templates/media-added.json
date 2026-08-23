@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "slug": "media-added",
+  "name": "New media added",
+  "description": "Tell a destination when a library item shows up for the first time.",
+  "group": "notifications",
+  "kind": "notification",
+  "minServerVersion": "2.2.0",
+  "inputs": [
+    {
+      "key": "server",
+      "kind": "server",
+      "label": "Server",
+      "required": false
+    },
+    {
+      "key": "to",
+      "kind": "destinations",
+      "label": "Send to",
+      "required": true
+    }
+  ],
+  "definition": {
+    "kind": "notification",
+    "triggers": [
+      {
+        "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000001801",
+        "type": "media.added",
+        "enabled": true
+      }
+    ],
+    "conditions": {
+      "groups": []
+    },
+    "actions": {
+      "actions": [
+        {
+          "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000001802",
+          "type": "send",
+          "enabled": true,
+          "to": {
+            "$input": "to"
+          }
+        }
+      ]
+    },
+    "scope": {
+      "serverId": {
+        "$input": "server"
+      }
+    }
+  },
+  "fingerprint": "a2e5cd5d95913be3445da57e78ed135af596887e78cea61d7562d9fb16e30740"
+}

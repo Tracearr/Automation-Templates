@@ -1,0 +1,60 @@
+name: Index and discussions
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'templates/**'
+      - 'verified.json'
+      - 'builtins.json'
+      - 'scripts/**'
+      - '.github/workflows/discussions.yml'
+  workflow_dispatch:
+
+# The job rewrites index.json and opens or edits one Discussion per template.
+permissions:
+  contents: write
+  discussions: write
+
+concurrency:
+  group: templates-index
+  cancel-in-progress: false
+
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install
+        run: npm install --no-audit --no-fund
+
+      - name: Validate every envelope
+        run: node scripts/validate.mjs
+
+      - name: Build the index
+        run: node scripts/build-index.mjs
+
+      # Creates a thread for a new slug, edits the body of one that moved, and
+      # writes each discussion number back into index.json for giscus.
+      - name: Create or update the discussions
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: node scripts/sync-discussions.mjs
+
+      - name: Commit the index
+        run: |
+          if git diff --quiet -- index.json; then
+            echo "index.json unchanged"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.json
+          git commit -m "rebuild the template index"
+          git push

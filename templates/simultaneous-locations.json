@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "slug": "simultaneous-locations",
+  "name": "Two places at once",
+  "description": "Raise a violation when one account streams from two distant places at the same time.",
+  "group": "policies",
+  "kind": "policy",
+  "minServerVersion": "2.2.0",
+  "inputs": [
+    {
+      "key": "km",
+      "kind": "number",
+      "label": "Distance apart",
+      "required": false,
+      "default": 100,
+      "min": 0
+    }
+  ],
+  "definition": {
+    "kind": "policy",
+    "severity": "warning",
+    "triggers": [
+      {
+        "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000001201",
+        "type": "session.started",
+        "enabled": true
+      }
+    ],
+    "conditions": {
+      "groups": [
+        {
+          "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000001202",
+          "enabled": true,
+          "conditions": [
+            {
+              "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000001203",
+              "enabled": true,
+              "field": "active_session_distance_km",
+              "operator": "gte",
+              "value": {
+                "$input": "km"
+              },
+              "params": {
+                "exclude_same_device": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "actions": {
+      "actions": []
+    },
+    "scope": {}
+  },
+  "fingerprint": "c16f66227085a9bc13a1905a95d78eb80da804c3291eab354c9adf9e0e7de75b"
+}

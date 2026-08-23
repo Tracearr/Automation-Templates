@@ -1,0 +1,15 @@
+{
+  "name": "tracearr-automation-templates",
+  "private": true,
+  "type": "module",
+  "description": "Community automation templates for Tracearr",
+  "license": "AGPL-3.0",
+  "scripts": {
+    "validate": "node scripts/validate.mjs",
+    "build-index": "node scripts/build-index.mjs",
+    "sync-discussions": "node scripts/sync-discussions.mjs"
+  },
+  "dependencies": {
+    "@tracearr/shared": "2.2.0"
+  }
+}

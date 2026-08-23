@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Propose a template
+    url: https://github.com/Tracearr/automation-templates#contributing-a-template
+    about: Templates arrive as pull requests. The README covers exporting one from Tracearr.
+  - name: Something is wrong with a template
+    url: https://github.com/Tracearr/automation-templates/discussions
+    about: Every template has its own thread in Discussions. Say what went wrong on that thread.

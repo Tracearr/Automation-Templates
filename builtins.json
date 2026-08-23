@@ -1,0 +1,21 @@
+{
+  "account-inactivity": "cba06098a0f5b10fe21f60bb30e06d6dd0411a28d1d37ac94fc639975b7de6a9",
+  "concurrent-streams": "2a03c0fc3ce7a22ce7ce453f482e27fc4a68e3c03fb7cbfbda3d16cced0a4bbf",
+  "device-velocity": "54b4dbc7eef5b64dedede6912f83ced335bc678d93731cceae873adaaa3876de",
+  "geo-restriction": "8efdaf72f7d682b9e8b91ac6d28573a4f6c8f2725046b2809085bf1e6da9f28c",
+  "impossible-travel": "8f5e6e23d061a3a3ec73d4ec9c46281b71b640a8197dd806fd675f76b6a5ca0c",
+  "kill-paused-streams": "c0a587f34155a7add778f180cfe487a93d6a28811c7320f19e36c3f330d1f794",
+  "media-added": "a2e5cd5d95913be3445da57e78ed135af596887e78cea61d7562d9fb16e30740",
+  "media-upgraded": "4da1d953c0b6218393cefebe814e8e74feca8908c2678fa3d240e103038b2ff3",
+  "no-4k-transcodes": "22b8e78918195e8375bf7672b2f38d0e17333d78c04a7370ef258046ed521973",
+  "paused-too-long": "a461c9d4cc823276c245aa4e0c14d170731a8ea5c30b845919d9e1734e4cb21d",
+  "plugin-update": "f3a7db9f0bb14d6a580d1e842fa6540af9f2d8034cc23f51c545143d72cf85a3",
+  "server-down": "8fffeffbbc327c9d67e1d3341629498920e50c7c4cb7cb8ad9dbcf7b01d7ef61",
+  "server-up": "518b1bc1265621fc2539ad4b08fef367aef11157c176adc4bf6fef95e7f55d22",
+  "server-update": "2eb71c36e188030b8910e273600fd1d9f000fa3c1fb3b0ef15bf9a358d976952",
+  "simultaneous-locations": "c16f66227085a9bc13a1905a95d78eb80da804c3291eab354c9adf9e0e7de75b",
+  "stream-ended": "bf96d149005f5fcf7010b4f782833e1f364f37fe7e1084976b4d7516d60ad859",
+  "stream-started": "c9075254cd27fcf488336cf98832083d219c39bf0787eb8e998648f8eb4202d0",
+  "tracearr-update": "7cbd0cf927bec5c74e345fed5cc800c35a558f08292c7823c618411c12ca1b73",
+  "transcode-started": "45b90f86b3fb44c2bc34573de39b94cfe7cd0f1be1ac94c1d1337e919c701948"
+}

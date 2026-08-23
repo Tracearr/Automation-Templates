@@ -1,0 +1,21 @@
+[
+  "account-inactivity",
+  "concurrent-streams",
+  "device-velocity",
+  "geo-restriction",
+  "impossible-travel",
+  "kill-paused-streams",
+  "media-added",
+  "media-upgraded",
+  "no-4k-transcodes",
+  "paused-too-long",
+  "plugin-update",
+  "server-down",
+  "server-up",
+  "server-update",
+  "simultaneous-locations",
+  "stream-ended",
+  "stream-started",
+  "tracearr-update",
+  "transcode-started"
+]

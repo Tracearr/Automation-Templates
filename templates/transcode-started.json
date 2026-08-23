@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "slug": "transcode-started",
+  "name": "Stream is transcoding",
+  "description": "Tell a destination when a stream transcodes video or audio.",
+  "group": "notifications",
+  "kind": "notification",
+  "minServerVersion": "2.2.0",
+  "inputs": [
+    {
+      "key": "server",
+      "kind": "server",
+      "label": "Server",
+      "required": false
+    },
+    {
+      "key": "to",
+      "kind": "destinations",
+      "label": "Send to",
+      "required": true
+    }
+  ],
+  "definition": {
+    "kind": "notification",
+    "triggers": [
+      {
+        "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000000301",
+        "type": "session.started",
+        "enabled": true
+      },
+      {
+        "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000000302",
+        "type": "session.transcode_changed",
+        "enabled": true
+      }
+    ],
+    "conditions": {
+      "groups": [
+        {
+          "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000000303",
+          "enabled": true,
+          "conditions": [
+            {
+              "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000000304",
+              "enabled": true,
+              "field": "is_transcoding",
+              "operator": "eq",
+              "value": "video_or_audio"
+            }
+          ]
+        }
+      ]
+    },
+    "actions": {
+      "actions": [
+        {
+          "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000000305",
+          "type": "send",
+          "enabled": true,
+          "to": {
+            "$input": "to"
+          }
+        }
+      ]
+    },
+    "scope": {
+      "serverId": {
+        "$input": "server"
+      }
+    }
+  },
+  "fingerprint": "45b90f86b3fb44c2bc34573de39b94cfe7cd0f1be1ac94c1d1337e919c701948"
+}

@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "slug": "media-upgraded",
+  "name": "Media upgraded",
+  "description": "Tell a destination when a library item changes quality.",
+  "group": "notifications",
+  "kind": "notification",
+  "minServerVersion": "2.2.0",
+  "inputs": [
+    {
+      "key": "server",
+      "kind": "server",
+      "label": "Server",
+      "required": false
+    },
+    {
+      "key": "to",
+      "kind": "destinations",
+      "label": "Send to",
+      "required": true
+    }
+  ],
+  "definition": {
+    "kind": "notification",
+    "triggers": [
+      {
+        "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000001901",
+        "type": "media.upgraded",
+        "enabled": true
+      }
+    ],
+    "conditions": {
+      "groups": []
+    },
+    "actions": {
+      "actions": [
+        {
+          "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000001902",
+          "type": "send",
+          "enabled": true,
+          "to": {
+            "$input": "to"
+          }
+        }
+      ]
+    },
+    "scope": {
+      "serverId": {
+        "$input": "server"
+      }
+    }
+  },
+  "fingerprint": "4da1d953c0b6218393cefebe814e8e74feca8908c2678fa3d240e103038b2ff3"
+}

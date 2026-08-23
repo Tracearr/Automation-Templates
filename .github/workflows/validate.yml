@@ -1,0 +1,42 @@
+name: Validate templates
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install
+        run: npm install --no-audit --no-fund
+
+      # Only envelopes live in templates/. A README, an image or a stray script
+      # there would be content nobody validated sitting next to content that was.
+      - name: Refuse anything but JSON in templates/
+        run: |
+          strays=$(find templates -type f ! -name '*.json')
+          if [ -n "$strays" ]; then
+            echo "Only .json envelopes belong in templates/:"
+            echo "$strays"
+            exit 1
+          fi
+
+      # Each envelope against templateEnvelopeSchema, with its fingerprint
+      # recomputed from the canonical JSON. A hand-edited definition fails here.
+      - name: Validate every envelope
+        run: node scripts/validate.mjs
+
+      # index.json itself is built on main, but a template that cannot be
+      # indexed should fail on the pull request rather than after the merge.
+      - name: Build the index
+        run: node scripts/build-index.mjs

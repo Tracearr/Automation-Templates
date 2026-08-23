@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "slug": "paused-too-long",
+  "name": "Paused too long",
+  "description": "Tell a destination when a stream sits paused past the minutes you allow.",
+  "group": "notifications",
+  "kind": "notification",
+  "minServerVersion": "2.2.0",
+  "inputs": [
+    {
+      "key": "minutes",
+      "kind": "duration",
+      "unit": "minutes",
+      "label": "Paused for",
+      "required": false,
+      "default": 30,
+      "min": 1,
+      "max": 1440
+    },
+    {
+      "key": "server",
+      "kind": "server",
+      "label": "Server",
+      "required": false
+    },
+    {
+      "key": "to",
+      "kind": "destinations",
+      "label": "Send to",
+      "required": true
+    }
+  ],
+  "definition": {
+    "kind": "notification",
+    "triggers": [
+      {
+        "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000000401",
+        "type": "session.held_for",
+        "enabled": true,
+        "params": {
+          "minutes": {
+            "$input": "minutes"
+          },
+          "measure": "current"
+        }
+      }
+    ],
+    "conditions": {
+      "groups": []
+    },
+    "actions": {
+      "actions": [
+        {
+          "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000000402",
+          "type": "send",
+          "enabled": true,
+          "to": {
+            "$input": "to"
+          }
+        }
+      ]
+    },
+    "scope": {
+      "serverId": {
+        "$input": "server"
+      }
+    }
+  },
+  "fingerprint": "a461c9d4cc823276c245aa4e0c14d170731a8ea5c30b845919d9e1734e4cb21d"
+}

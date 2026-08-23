@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "slug": "server-down",
+  "name": "Server down",
+  "description": "Tell a destination when a media server stops answering.",
+  "group": "server_health",
+  "kind": "notification",
+  "minServerVersion": "2.2.0",
+  "inputs": [
+    {
+      "key": "server",
+      "kind": "server",
+      "label": "Server",
+      "required": false
+    },
+    {
+      "key": "to",
+      "kind": "destinations",
+      "label": "Send to",
+      "required": true
+    }
+  ],
+  "definition": {
+    "kind": "notification",
+    "triggers": [
+      {
+        "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000000501",
+        "type": "server.down",
+        "enabled": true
+      }
+    ],
+    "conditions": {
+      "groups": []
+    },
+    "actions": {
+      "actions": [
+        {
+          "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000000502",
+          "type": "send",
+          "enabled": true,
+          "to": {
+            "$input": "to"
+          }
+        }
+      ]
+    },
+    "scope": {
+      "serverId": {
+        "$input": "server"
+      }
+    }
+  },
+  "fingerprint": "8fffeffbbc327c9d67e1d3341629498920e50c7c4cb7cb8ad9dbcf7b01d7ef61"
+}

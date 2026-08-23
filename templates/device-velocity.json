@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "slug": "device-velocity",
+  "name": "Many IPs in a window",
+  "description": "Raise a violation when an account streams from more IP addresses in a window than you allow.",
+  "group": "policies",
+  "kind": "policy",
+  "minServerVersion": "2.2.0",
+  "inputs": [
+    {
+      "key": "ips",
+      "kind": "number",
+      "label": "IP addresses allowed",
+      "required": false,
+      "default": 5,
+      "min": 1,
+      "max": 100
+    },
+    {
+      "key": "hours",
+      "kind": "duration",
+      "unit": "hours",
+      "label": "Within",
+      "required": false,
+      "default": 24,
+      "min": 1,
+      "max": 168
+    }
+  ],
+  "definition": {
+    "kind": "policy",
+    "severity": "warning",
+    "triggers": [
+      {
+        "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000001301",
+        "type": "session.started",
+        "enabled": true
+      }
+    ],
+    "conditions": {
+      "groups": [
+        {
+          "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000001302",
+          "enabled": true,
+          "conditions": [
+            {
+              "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000001303",
+              "enabled": true,
+              "field": "unique_ips_in_window",
+              "operator": "gt",
+              "value": {
+                "$input": "ips"
+              },
+              "params": {
+                "window_hours": {
+                  "$input": "hours"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "actions": {
+      "actions": []
+    },
+    "scope": {}
+  },
+  "fingerprint": "54b4dbc7eef5b64dedede6912f83ced335bc678d93731cceae873adaaa3876de"
+}

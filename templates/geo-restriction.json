@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "slug": "geo-restriction",
+  "name": "Blocked countries",
+  "description": "Raise a violation when a stream comes from a country you block.",
+  "group": "policies",
+  "kind": "policy",
+  "minServerVersion": "2.2.0",
+  "inputs": [
+    {
+      "key": "countries",
+      "kind": "field_value",
+      "field": "country",
+      "label": "Blocked countries",
+      "required": true
+    },
+    {
+      "key": "ignoreLan",
+      "kind": "boolean",
+      "label": "Ignore local network sessions",
+      "required": false,
+      "default": true
+    }
+  ],
+  "definition": {
+    "kind": "policy",
+    "severity": "warning",
+    "triggers": [
+      {
+        "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000001401",
+        "type": "session.started",
+        "enabled": true
+      }
+    ],
+    "conditions": {
+      "groups": [
+        {
+          "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000001402",
+          "enabled": true,
+          "conditions": [
+            {
+              "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000001403",
+              "enabled": true,
+              "field": "country",
+              "operator": "in",
+              "value": {
+                "$input": "countries"
+              }
+            }
+          ]
+        },
+        {
+          "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000001404",
+          "enabled": {
+            "$input": "ignoreLan"
+          },
+          "conditions": [
+            {
+              "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000001405",
+              "enabled": true,
+              "field": "is_local_network",
+              "operator": "eq",
+              "value": false
+            }
+          ]
+        }
+      ]
+    },
+    "actions": {
+      "actions": []
+    },
+    "scope": {}
+  },
+  "fingerprint": "8efdaf72f7d682b9e8b91ac6d28573a4f6c8f2725046b2809085bf1e6da9f28c"
+}

@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "slug": "plugin-update",
+  "name": "Tracearr plugin update",
+  "description": "Tell a destination when a server has a newer Tracearr plugin to install.",
+  "group": "server_health",
+  "kind": "notification",
+  "minServerVersion": "2.2.0",
+  "inputs": [
+    {
+      "key": "server",
+      "kind": "server",
+      "label": "Server",
+      "required": false
+    },
+    {
+      "key": "to",
+      "kind": "destinations",
+      "label": "Send to",
+      "required": true
+    }
+  ],
+  "definition": {
+    "kind": "notification",
+    "triggers": [
+      {
+        "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000000701",
+        "type": "plugin.update_available",
+        "enabled": true
+      }
+    ],
+    "conditions": {
+      "groups": []
+    },
+    "actions": {
+      "actions": [
+        {
+          "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000000702",
+          "type": "send",
+          "enabled": true,
+          "to": {
+            "$input": "to"
+          }
+        }
+      ]
+    },
+    "scope": {
+      "serverId": {
+        "$input": "server"
+      }
+    }
+  },
+  "fingerprint": "f3a7db9f0bb14d6a580d1e842fa6540af9f2d8034cc23f51c545143d72cf85a3"
+}

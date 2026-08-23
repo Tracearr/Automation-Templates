@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "slug": "account-inactivity",
+  "name": "Inactive account",
+  "description": "Raise a violation when an account goes unused for the days you allow.",
+  "group": "policies",
+  "kind": "policy",
+  "minServerVersion": "2.2.0",
+  "inputs": [
+    {
+      "key": "days",
+      "kind": "duration",
+      "unit": "days",
+      "label": "Idle for",
+      "required": false,
+      "default": 30,
+      "min": 1,
+      "max": 3650
+    }
+  ],
+  "definition": {
+    "kind": "policy",
+    "severity": "warning",
+    "triggers": [
+      {
+        "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000001501",
+        "type": "account.inactive_for",
+        "enabled": true,
+        "params": {
+          "days": {
+            "$input": "days"
+          }
+        }
+      }
+    ],
+    "conditions": {
+      "groups": []
+    },
+    "actions": {
+      "actions": []
+    },
+    "scope": {}
+  },
+  "fingerprint": "cba06098a0f5b10fe21f60bb30e06d6dd0411a28d1d37ac94fc639975b7de6a9"
+}

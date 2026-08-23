@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "slug": "tracearr-update",
+  "name": "Tracearr update",
+  "description": "Tell a destination when a new Tracearr release is out.",
+  "group": "server_health",
+  "kind": "notification",
+  "minServerVersion": "2.2.0",
+  "inputs": [
+    {
+      "key": "to",
+      "kind": "destinations",
+      "label": "Send to",
+      "required": true
+    }
+  ],
+  "definition": {
+    "kind": "notification",
+    "triggers": [
+      {
+        "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000000901",
+        "type": "tracearr.update_available",
+        "enabled": true
+      }
+    ],
+    "conditions": {
+      "groups": []
+    },
+    "actions": {
+      "actions": [
+        {
+          "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000000902",
+          "type": "send",
+          "enabled": true,
+          "to": {
+            "$input": "to"
+          }
+        }
+      ]
+    },
+    "scope": {}
+  },
+  "fingerprint": "7cbd0cf927bec5c74e345fed5cc800c35a558f08292c7823c618411c12ca1b73"
+}

@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "slug": "kill-paused-streams",
+  "name": "Stop paused streams",
+  "description": "Stop a stream that has sat paused past the minutes you allow.",
+  "group": "housekeeping",
+  "kind": "notification",
+  "minServerVersion": "2.2.0",
+  "inputs": [
+    {
+      "key": "minutes",
+      "kind": "duration",
+      "unit": "minutes",
+      "label": "Paused for",
+      "required": false,
+      "default": 30,
+      "min": 1,
+      "max": 1440
+    },
+    {
+      "key": "server",
+      "kind": "server",
+      "label": "Server",
+      "required": false
+    },
+    {
+      "key": "message",
+      "kind": "text",
+      "label": "Message shown to the viewer",
+      "required": false,
+      "default": "Your stream was stopped because it was paused for too long",
+      "maxLength": 500
+    }
+  ],
+  "definition": {
+    "kind": "notification",
+    "triggers": [
+      {
+        "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000001701",
+        "type": "session.held_for",
+        "enabled": true,
+        "params": {
+          "minutes": {
+            "$input": "minutes"
+          },
+          "measure": "current"
+        }
+      }
+    ],
+    "conditions": {
+      "groups": []
+    },
+    "actions": {
+      "actions": [
+        {
+          "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000001702",
+          "type": "kill_stream",
+          "enabled": true,
+          "message": {
+            "$input": "message"
+          }
+        }
+      ]
+    },
+    "scope": {
+      "serverId": {
+        "$input": "server"
+      }
+    }
+  },
+  "fingerprint": "c0a587f34155a7add778f180cfe487a93d6a28811c7320f19e36c3f330d1f794"
+}

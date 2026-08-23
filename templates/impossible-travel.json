@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "slug": "impossible-travel",
+  "name": "Impossible travel",
+  "description": "Raise a violation when two sessions sit further apart than anyone could travel between them.",
+  "group": "policies",
+  "kind": "policy",
+  "minServerVersion": "2.2.0",
+  "inputs": [
+    {
+      "key": "kmh",
+      "kind": "number",
+      "label": "Top speed",
+      "required": false,
+      "default": 500,
+      "min": 0
+    }
+  ],
+  "definition": {
+    "kind": "policy",
+    "severity": "warning",
+    "triggers": [
+      {
+        "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000001101",
+        "type": "session.started",
+        "enabled": true
+      }
+    ],
+    "conditions": {
+      "groups": [
+        {
+          "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000001102",
+          "enabled": true,
+          "conditions": [
+            {
+              "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000001103",
+              "enabled": true,
+              "field": "travel_speed_kmh",
+              "operator": "gt",
+              "value": {
+                "$input": "kmh"
+              },
+              "params": {
+                "exclude_same_device": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "actions": {
+      "actions": []
+    },
+    "scope": {}
+  },
+  "fingerprint": "8f5e6e23d061a3a3ec73d4ec9c46281b71b640a8197dd806fd675f76b6a5ca0c"
+}

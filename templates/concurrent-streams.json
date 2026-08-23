@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "slug": "concurrent-streams",
+  "name": "Too many streams at once",
+  "description": "Raise a violation when an account plays more streams at once than you allow.",
+  "group": "policies",
+  "kind": "policy",
+  "minServerVersion": "2.2.0",
+  "inputs": [
+    {
+      "key": "max",
+      "kind": "number",
+      "label": "Streams allowed",
+      "required": false,
+      "default": 3,
+      "min": 1,
+      "max": 100
+    },
+    {
+      "key": "ignoreSameDevice",
+      "kind": "boolean",
+      "label": "Ignore extra streams from one device",
+      "required": false,
+      "default": true
+    }
+  ],
+  "definition": {
+    "kind": "policy",
+    "severity": "warning",
+    "triggers": [
+      {
+        "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000001001",
+        "type": "session.started",
+        "enabled": true
+      }
+    ],
+    "conditions": {
+      "groups": [
+        {
+          "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000001002",
+          "enabled": true,
+          "conditions": [
+            {
+              "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000001003",
+              "enabled": true,
+              "field": "concurrent_streams",
+              "operator": "gt",
+              "value": {
+                "$input": "max"
+              },
+              "params": {
+                "exclude_same_device": {
+                  "$input": "ignoreSameDevice"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "actions": {
+      "actions": []
+    },
+    "scope": {}
+  },
+  "fingerprint": "2a03c0fc3ce7a22ce7ce453f482e27fc4a68e3c03fb7cbfbda3d16cced0a4bbf"
+}

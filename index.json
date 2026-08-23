@@ -267,6 +267,31 @@
     "verified": true
   },
   {
+    "slug": "new-device",
+    "name": "New device",
+    "description": "Tell a destination the first time an account streams from a device you have not seen.",
+    "group": "notifications",
+    "kind": "notification",
+    "minServerVersion": "2.2.0",
+    "inputs": [
+      {
+        "key": "to",
+        "label": "Send to",
+        "required": true,
+        "kind": "destinations"
+      }
+    ],
+    "sentence": "When an account plays from a new device, send a notification.",
+    "effects": [
+      "tellsOnly",
+      "everyServer"
+    ],
+    "code": "tracearr1.pZHLjtswDEV_RSC6lAPLzcv-iG5mMJtiUOhBOcTYlCvJCYIg_17IzgRtga6qFQVSl1fn3sChJ6ZMgaG7gbalSn-U32-ArM2ADrocZ5RADjpQXtna7LFqrdLV1jRYHd1BV_XjNHXdgIQcitgX4mnO0JXrXUK-TggdJGQH9_e7BBvY0XN1H8M8lc2l9UFc1nHI5MnqxamEZEORuBWxSH2P8b-cKnia0taGmfOG8fLD4ZksrhYdJhtpWknBKw6D0MJhysSLKZFPKDzFlEWmEYVm8ZASKUfUYxI-hnF5VFTFNczipM8oOGSREHkDEjxxj3GKxIXWzmNra_T7o7attt7brdmi083W7A9W6daoVlmHx91OHVpbK9viEZu9sTvffDUO5MryL34JJCyBrMw-8Lom84T927fK7KANDtDBC7ITy1zEnzPFT87393_FNBK_YDxjfMOYVnLNptnUIIH1WHB_w8sDyJLqCUf9nFUS0jD3RRYv1WcYvwA",
+    "fingerprint": "5fe9c0ef68ac9acffc4b4eda24b67c1a9b191cde855179c01c9e8e26bc5f23bd",
+    "builtin": true,
+    "verified": true
+  },
+  {
     "slug": "no-4k-transcodes",
     "name": "No 4K transcodes",
     "description": "Stop a stream that transcodes 4K source video.",
@@ -607,6 +632,31 @@
     ],
     "code": "tracearr1.pZPBjpswEIZfxRr1aCIMZBN4g5636qVaRcYeyGiJzdom1Sri3SvjhiTdHqotJ9vg3-PvGy6gsSNDgayB5gJSxZF_GP64ABrZDqihCW5CDqShAdEJlbdPmNVKyKxqC8z2eiez_PqU-RY4BBvDvpAZpwBNnM4cwvuI0IBHo2F-mTkoazStR_fOTmM6-f7Fx0I6wiHWQv4QnDReWU2mh3-vsAIOdkQng3XQAL4Bh7McpljdmTTag3UHOWmyML_wz3Io0yVfycQNxgbqSMmFOQevbIRxAY_ujO6rfuCVFmGO0Bz1Pbr_MiLgDr73ZM3GB-kCapj5p1OLj6lXHXhQR2l6_O1Zo1eOxtRu8A2HgUmm0QcyCw_284iGSeaDQ3lia4pniw1mHVtsbCDKNz260ZGJoKptW-fd_qktu7aqVNGqstruSo1l3daV6nCndN6JFoVUdaWEFmW5w1rUapeLutoDT233hyAfmym6SNhf8f0mZTW6zgfZ4gANPF8XHL5N5CLRTg4eI-MUEext-939_UOI0Wz57pYSvcRG_Hsrncikk7-j8wlxsSk2OXAw8hT1PCeu5Nnj_-LVEU9y3SY4-GHqY51XA9naJ78A",
     "fingerprint": "45b90f86b3fb44c2bc34573de39b94cfe7cd0f1be1ac94c1d1337e919c701948",
+    "builtin": true,
+    "verified": true
+  },
+  {
+    "slug": "trust-score-changed",
+    "name": "Trust score changed",
+    "description": "Tell a destination when an account's trust score changes.",
+    "group": "notifications",
+    "kind": "notification",
+    "minServerVersion": "2.2.0",
+    "inputs": [
+      {
+        "key": "to",
+        "label": "Send to",
+        "required": true,
+        "kind": "destinations"
+      }
+    ],
+    "sentence": "When an account's trust score changes, send a notification.",
+    "effects": [
+      "tellsOnly",
+      "everyServer"
+    ],
+    "code": "tracearr1.pZFRS-wwEIX_Shgu-JIubbpr2v4NxRcRmSbTbrA7rUmqyLL_XdLuLVfFp5unCTk5c_jOGSx1jl10I0NzBjRpCl_GxzMQYzuQhSb6mSQ4Cw0UXWHy9pay2hSY7VtFWWU1Zvn1qCJXICGOyeyP42mO0KTrRUL8mAgaCMQWLk8XCWZk67bVvR_nKW1OTy-O0zoeo-ucwSWphGDGZHFOZt71Pfn_SlrAFgqNGWeOu-jnEJ_NEbmna0pLwXg3rbDgnoZBoLAUouMll3g_EgtkcfW4CWJxEcGMnsTqFXYgoXPck5-84wRF27yu9WGvOlXkpemwQ1MgotVqr_dU6lKpg77VinTVVdbYQ1XWZVvruqxMVZUgV2TfMAWQsHBf0bzQx1rAxvSf6Ek7YEsDNHBHbMWi8_Q6O_8X5-XptzZOju_Iv5F_IB9WOmqndjlIYDwlqvc_ONilxSOdcPtUSAjD3KeUSZ4t8myr4BM",
+    "fingerprint": "7d0997542f2103cfafac1aaad72474e3732257672e78f8dcd58393b97938c883",
     "builtin": true,
     "verified": true
   }

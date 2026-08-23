@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "slug": "new-device",
+  "name": "New device",
+  "description": "Tell a destination the first time an account streams from a device you have not seen.",
+  "group": "notifications",
+  "kind": "notification",
+  "minServerVersion": "2.2.0",
+  "inputs": [
+    {
+      "key": "to",
+      "kind": "destinations",
+      "label": "Send to",
+      "required": true
+    }
+  ],
+  "definition": {
+    "kind": "notification",
+    "triggers": [
+      {
+        "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000002001",
+        "type": "account.new_device",
+        "enabled": true
+      }
+    ],
+    "conditions": {
+      "groups": []
+    },
+    "actions": {
+      "actions": [
+        {
+          "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000002002",
+          "type": "send",
+          "enabled": true,
+          "to": {
+            "$input": "to"
+          }
+        }
+      ]
+    },
+    "scope": {}
+  },
+  "fingerprint": "5fe9c0ef68ac9acffc4b4eda24b67c1a9b191cde855179c01c9e8e26bc5f23bd"
+}

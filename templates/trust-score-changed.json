@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "slug": "trust-score-changed",
+  "name": "Trust score changed",
+  "description": "Tell a destination when an account's trust score changes.",
+  "group": "notifications",
+  "kind": "notification",
+  "minServerVersion": "2.2.0",
+  "inputs": [
+    {
+      "key": "to",
+      "kind": "destinations",
+      "label": "Send to",
+      "required": true
+    }
+  ],
+  "definition": {
+    "kind": "notification",
+    "triggers": [
+      {
+        "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000002101",
+        "type": "account.trust_changed",
+        "enabled": true
+      }
+    ],
+    "conditions": {
+      "groups": []
+    },
+    "actions": {
+      "actions": [
+        {
+          "id": "1f1c0b6e-9c1a-4b2e-8d7a-000000002102",
+          "type": "send",
+          "enabled": true,
+          "to": {
+            "$input": "to"
+          }
+        }
+      ]
+    },
+    "scope": {}
+  },
+  "fingerprint": "7d0997542f2103cfafac1aaad72474e3732257672e78f8dcd58393b97938c883"
+}

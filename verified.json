@@ -7,6 +7,7 @@
   "kill-paused-streams",
   "media-added",
   "media-upgraded",
+  "new-device",
   "no-4k-transcodes",
   "paused-too-long",
   "plugin-update",
@@ -17,5 +18,6 @@
   "stream-ended",
   "stream-started",
   "tracearr-update",
-  "transcode-started"
+  "transcode-started",
+  "trust-score-changed"
 ]

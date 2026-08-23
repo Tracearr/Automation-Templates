@@ -86,17 +86,9 @@ export function readTemplates(dir = TEMPLATES_DIR) {
   return { templates, errors };
 }
 
-// ---------------------------------------------------------------------------
-// The plain-words sentence.
-//
-// A port of the web's describeAutomation() and describeTemplate(), with the
-// strings lifted from the `en` locale's `automations.describe.*`. The gallery
-// renders index.json, so this has to say what the app says; when the app's
-// describe grammar or its copy moves, move this with it.
-//
-// Structural facts (units, options, value types) come from @tracearr/shared, so
-// only the words are copied here.
-// ---------------------------------------------------------------------------
+// The plain-words sentence: a port of the web's describeAutomation() and
+// describeTemplate(), with the words lifted from the `en` locale's
+// `automations.describe.*`. When the app's copy moves, move this with it.
 
 /** `automations.describe.*` from packages/translations/src/locales/en/pages.json. */
 const TEXT = {

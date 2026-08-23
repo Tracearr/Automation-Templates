@@ -48,7 +48,7 @@ function bodyFor(entry) {
     marker(entry.slug),
     entry.sentence,
     '',
-    `Group: ${entry.group} · Records: ${entry.kind === 'policy' ? 'a violation' : 'just an alert'}`,
+    `Group: ${entry.group} · Records: ${entry.kind === 'policy' ? 'a violation' : 'an alert'}`,
     `Needs Tracearr ${entry.minServerVersion} or newer · fingerprint \`${entry.fingerprint}\``,
     '',
     'Share code. Paste it into Tracearr under Automations → Import:',

@@ -24,7 +24,11 @@ jobs:
   index:
     runs-on: ubuntu-latest
     steps:
+      # The push at the end goes through a write deploy key: main requires the
+      # validate check, and GITHUB_TOKEN has no way past that.
       - uses: actions/checkout@v4
+        with:
+          ssh-key: ${{ secrets.INDEX_DEPLOY_KEY }}
 
       - uses: actions/setup-node@v4
         with:

@@ -55,7 +55,7 @@ export carries no destination configuration, no tokens, and no names from your i
 
 `discussions.yml` runs on `main`: it rebuilds `index.json`, opens or edits one Discussion per
 template in the **Templates** category, writes each discussion number back into `index.json`, and
-commits the result. The docs page for a template embeds that thread through giscus, so reactions
+commits the result. That last push uses the `INDEX_DEPLOY_KEY` deploy key, since `main` requires the validate check and the workflow's own token cannot get past it. The docs page for a template embeds that thread through giscus, so reactions
 and replies live on GitHub.
 
 ### What gets rejected

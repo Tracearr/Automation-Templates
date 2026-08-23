@@ -10,6 +10,6 @@
     "sync-discussions": "node scripts/sync-discussions.mjs"
   },
   "dependencies": {
-    "@tracearr/shared": "2.2.0"
+    "@tracearr/shared": "next"
   }
 }

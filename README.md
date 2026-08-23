@@ -90,9 +90,10 @@ node scripts/validate.mjs      # every envelope, one line per problem
 node scripts/build-index.mjs   # writes index.json
 ```
 
-`@tracearr/shared` is pinned in `package.json` to the release the template schema belongs to
-(`2.2.0`, the first release with templates). Bump it deliberately, together with whatever
-`minServerVersion` the envelopes then carry. Betas publish under the `next` tag.
+`@tracearr/shared` is pinned in `package.json` to the release the template schema belongs to.
+While 2.2 is in beta it points at the `next` tag, which is where betas publish; at the 2.2.0
+release it becomes `2.2.0`. Bump it deliberately, together with whatever `minServerVersion` the
+envelopes then carry.
 
 ## License
 

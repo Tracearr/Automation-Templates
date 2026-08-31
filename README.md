@@ -11,13 +11,13 @@ out what it can do.
 
 ## What is in here
 
-| Path | What |
-|---|---|
-| `templates/<slug>.json` | One exported envelope per template. CI rejects any other file here. |
-| `index.json` | Built by CI on `main`. The docs gallery reads this and nothing else. |
-| `builtins.json` | Slug to fingerprint for the templates Tracearr already ships. |
-| `verified.json` | Slugs a maintainer has read. |
-| `scripts/` | Validation, the index build, and the discussion sync. |
+| Path                    | What                                                                 |
+| ----------------------- | -------------------------------------------------------------------- |
+| `templates/<slug>.json` | One exported envelope per template. CI rejects any other file here.  |
+| `index.json`            | Built by CI on `main`. The docs gallery reads this and nothing else. |
+| `builtins.json`         | Slug to fingerprint for the templates Tracearr already ships.        |
+| `verified.json`         | Slugs a maintainer has read.                                         |
+| `scripts/`              | Validation, the index build, and the discussion sync.                |
 
 ## Contributing a template
 

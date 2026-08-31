@@ -7,9 +7,14 @@
   "scripts": {
     "validate": "node scripts/validate.mjs",
     "build-index": "node scripts/build-index.mjs",
-    "sync-discussions": "node scripts/sync-discussions.mjs"
+    "sync-discussions": "node scripts/sync-discussions.mjs",
+    "format": "prettier --write \"**/*.{ts,js,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,js,json,md}\""
   },
   "dependencies": {
     "@tracearr/shared": "next"
+  },
+  "devDependencies": {
+    "prettier": "^3.8.1"
   }
 }

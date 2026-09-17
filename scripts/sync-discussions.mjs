@@ -108,6 +108,7 @@ const index = JSON.parse(readFileSync('index.json', 'utf8'));
 let created = 0;
 let updated = 0;
 let unchanged = 0;
+let failed = 0;
 
 for (const entry of index) {
   const body = bodyFor(entry);
@@ -132,16 +133,25 @@ for (const entry of index) {
     unchanged += 1;
     continue;
   }
-  await graphql(
-    `mutation ($discussionId: ID!, $title: String!, $body: String!) {
-      updateDiscussion(input: { discussionId: $discussionId, title: $title, body: $body }) {
-        discussion { number }
-      }
-    }`,
-    { discussionId: found.id, title: entry.name, body }
-  );
-  updated += 1;
+  // A thread that cannot be edited must not hold back index.json: the number
+  // it already has is still right, only its body is behind.
+  try {
+    await graphql(
+      `mutation ($discussionId: ID!, $title: String!, $body: String!) {
+        updateDiscussion(input: { discussionId: $discussionId, title: $title, body: $body }) {
+          discussion { number }
+        }
+      }`,
+      { discussionId: found.id, title: entry.name, body }
+    );
+    updated += 1;
+  } catch (error) {
+    failed += 1;
+    console.log(`::warning::discussion #${found.number} (${entry.slug}) was not updated: ${error.message}`);
+  }
 }
 
 writeFileSync('index.json', `${JSON.stringify(index, null, 2)}\n`);
-console.log(`discussions: ${created} created, ${updated} updated, ${unchanged} unchanged`);
+console.log(
+  `discussions: ${created} created, ${updated} updated, ${unchanged} unchanged, ${failed} failed`
+);

@@ -45,9 +45,11 @@ jobs:
 
       # Creates a thread for a new slug, edits the body of one that moved, and
       # writes each discussion number back into index.json for giscus.
+      # The Actions token can open a discussion but is refused updateDiscussion,
+      # so this step runs on a fine-grained token with Discussions read and write.
       - name: Create or update the discussions
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.DISCUSSIONS_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: node scripts/sync-discussions.mjs
 
